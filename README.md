@@ -1,46 +1,38 @@
-# Getting Started with Create React App
+# 🏥 ClearVikalp - Medical Test Booking Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A high-performance, conversion-optimized frontend application designed to streamline the booking process for medical tests and lab services. Built with a focus on marketing attribution tracking, responsive design, and seamless user experience.
 
-## Available Scripts
+## 🚀 Tech Stack
 
-In the project directory, you can run:
+*   **Core Framework**: React 18, TypeScript
+*   **Routing**: React Router DOM
+*   **State Management**: React Context API
+*   **Styling & UI**: Tailwind CSS, Material UI (`@mui/material`), Material-Tailwind, Emotion
+*   **Analytics & Tracking**: Google Tag Manager (`react-gtm-module`)
+*   **Component Libraries**: React Slick (Carousels), React Dropdown, React Icons
+*   **API Communication**: Fetch API (Native), Axios
 
-### `npm start`
+## ⭐ Spotlight Feature: Dynamic Marketing Attribution & Global Booking State
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**The Challenge:**
+In modern healthcare marketing, accurately attributing leads to specific ad campaigns is critical. The application needed to capture extensive URL parameters, persist them globally without cluttering component props, and attach them reliably to user booking submissions and analytics events—all while handling complex form validation and asynchronous API states.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Under the Hood:**
+*   **URL Parameter Interception:** `App.tsx` utilizes `useSearchParams` to intercept 14 distinct marketing parameters (including `campaignid`, `gclid`, `utm_source`, `matchtype`, etc.) upon initial load.
+*   **Global Context Management:** These parameters are immediately injected into a global `BookModalContext` alongside the booking flow states (`isBookModal`, `isFormFilled`, `selectedPLan`). This avoids prop-drilling and ensures the data is accessible everywhere.
+*   **Context-Aware Booking Engine:** Inside `BookingCard.tsx`, the form validation logic seamlessly accesses this context. Upon submission, it constructs a robust payload combining the user's details, the selected lab partner, and the exact marketing parameters.
+*   **Dynamic Analytics Tracking:** Simultaneously, the component manually pushes customized events (`booking_card_submit`) to the GTM `dataLayer`, distinguishing whether the user converted from a popup card or a static page card.
 
-### `npm test`
+**Why it's impressive:**
+This feature bridges the gap between complex marketing requirements and solid React architecture. It handles asynchronous side-effects, complex form state (validation, loading, success views), and third-party tracking APIs within a clean, centralized Context provider, ensuring the codebase remains maintainable and highly scalable.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠 Features
 
-### `npm run build`
+*   **Responsive Landing Page Architecture**: Modular sections (`Hero`, `Plans`, `StepsJourney`, `FAQ`, `Accreditation`) built with Tailwind CSS to ensure a pixel-perfect experience across all devices.
+*   **Contextual Booking Modals**: A global `BookTestModal` that can be triggered from multiple touchpoints (like the `StickyButton`), providing a frictionless conversion funnel.
+*   **Dynamic Lab Selection**: Integrated custom dropdowns for selecting preferred lab partners (e.g., Metropolis, Redcliffe, Manipal TRUtest) with robust form validation.
+*   **Smooth Carousels & Animations**: Implemented slick carousels for test plans and reviews, ensuring an engaging and interactive user interface.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 💡 Why This Project Stands Out
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project demonstrates my ability to build frontend applications that are not just visually appealing, but functionally robust and business-oriented. By engineering a custom solution for marketing attribution and integrating it deeply with a global React Context state, I successfully addressed a complex real-world business requirement. The codebase showcases a strong understanding of TypeScript, component reusability, form lifecycle management, and the integration of third-party analytics, proving my capacity to deliver production-ready, scalable web applications.
